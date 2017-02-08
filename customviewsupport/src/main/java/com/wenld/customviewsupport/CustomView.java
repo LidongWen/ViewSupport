@@ -1,7 +1,6 @@
 package com.wenld.customviewsupport;
 
 import android.content.Context;
-import android.content.res.Resources;
 import android.util.AttributeSet;
 import android.view.View;
 
@@ -16,7 +15,7 @@ public abstract class CustomView extends View {
     protected int mHeight;
 
     //View默认最小宽度
-    protected static final int DEFAULT_MIN_WIDTH = 200;
+    protected int DEFAULT_MIN_WIDTH = 200;
 
     //中心点 坐标
     protected int mCenterX;
@@ -47,7 +46,7 @@ public abstract class CustomView extends View {
     }
 
     private int measure(int origin) {
-        int result = dip2px(DEFAULT_MIN_WIDTH);
+        int result = DensityUtils.dip2px(getContext(), DEFAULT_MIN_WIDTH);
         int specMode = MeasureSpec.getMode(origin);
         int specSize = MeasureSpec.getSize(origin);
         if (specMode == MeasureSpec.EXACTLY) {
@@ -79,17 +78,7 @@ public abstract class CustomView extends View {
      */
     public abstract void reset();
 
-    /**
-     * 根据手机的分辨率从 dp 的单位 转成为 px(像素)
-     */
-    /**
-     * dip转化像素
-     *
-     * @param dipValue
-     * @return
-     */
-    public static int dip2px(float dipValue) {
-        final float scale = Resources.getSystem().getDisplayMetrics().density;
-        return (int) (dipValue * scale + 0.5f);
+    public void setDefaultWidth(int DEFAULT_MIN_WIDTH) {
+        this.DEFAULT_MIN_WIDTH = DEFAULT_MIN_WIDTH;
     }
 }

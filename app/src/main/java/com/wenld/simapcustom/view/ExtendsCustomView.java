@@ -1,7 +1,8 @@
-package com.wenld.simapcustom;
+package com.wenld.simapcustom.view;
 
 import android.content.Context;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.RectF;
 import android.util.AttributeSet;
@@ -10,22 +11,24 @@ import com.wenld.customviewsupport.CanvasAidUtils;
 import com.wenld.customviewsupport.CustomView;
 
 /**
+ *
+ *  // 继承 ExtentsCustomView 的示例
  * <p/>
  * Author: 温利东 on 2017/2/6 15:16.
  * blog: http://blog.csdn.net/sinat_15877283
  * github: https://github.com/LidongWen
  */
 
-public class ExtentsCustomView extends CustomView {
+public class ExtendsCustomView extends CustomView {
     Paint paintMain;
 
     RectF rectFMain;
 
-    public ExtentsCustomView(Context context) {
+    public ExtendsCustomView(Context context) {
         super(context);
     }
 
-    public ExtentsCustomView(Context context, AttributeSet attrs) {
+    public ExtendsCustomView(Context context, AttributeSet attrs) {
         super(context, attrs);
     }
 
@@ -54,8 +57,9 @@ public class ExtentsCustomView extends CustomView {
     protected void onDraw(Canvas canvas) {
         canvas.drawCircle(mCenterX, mCenterY, circleR / 2, paintMain);
 //        CanvasAidUtils.set2DCoordinateLe(canvas);
-//        canvas.translate(mWidth/2,mHeight/2);  // 移动画布
-        CanvasAidUtils.draw3DCoordinateSpace(canvas);
+        canvas.translate(mWidth/2,mHeight/2);  // 移动画布
+        CanvasAidUtils.setLineColor(Color.RED);
+        CanvasAidUtils.draw2DCoordinateSpace(canvas);
 //        CanvasAidUtils.setDrawAid(false);
 //        super.onDraw(canvas);
     }
