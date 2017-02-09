@@ -73,6 +73,7 @@ public class LyricsView extends CustomView {
 
         // 渐变
         textPaint.setColor(colorLeft);
+//        textPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_IN));
         float progressWidth = (mPercent / MAX_PROGRESS) * getMeasuredWidth();
         canvas.save(Canvas.CLIP_SAVE_FLAG);
         canvas.clipRect(0, 0, progressWidth, getMeasuredHeight());

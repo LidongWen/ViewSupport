@@ -28,4 +28,5 @@ dependencies {
     testCompile 'junit:junit:4.12'
     compile project(':customviewsupport')
     compile 'com.zhy:base-rvadapter:3.0.2'
+    compile 'com.github.chrisbanes.photoview:library:1.2.4'
 }

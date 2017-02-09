@@ -1,8 +1,9 @@
 package com.wenld.simapcustom;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
+import android.view.ViewGroup;
 
 /**
  * <p/>
@@ -11,10 +12,13 @@ import android.support.v7.app.AppCompatActivity;
  * github: https://github.com/LidongWen
  */
 
-public class Simple_ExtendsCustom extends AppCompatActivity {
+public class Simple_ExtendsCustom extends Activity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activty_extends);
+        ViewGroup content = (ViewGroup) findViewById(android.R.id.content);
+
+
     }
 }
