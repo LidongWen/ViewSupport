@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
     public RecyclerView rlvAtyFilter;
     CommonAdapter adapter;
     List<String> list = new ArrayList<>();
-    String items[] = {" 继承 CustomView ", " 传统处理手势","使用 GestureListerView 分解手势"," 渐变效果"};
+    String items[] = {" 继承 CustomView ", " 传统处理手势","使用 GestureListerView 分解手势"," 渐变效果","ViewPage切换效果"};
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,6 +51,9 @@ public class MainActivity extends AppCompatActivity {
                                 break;
                             case 3:
                                 intent = new Intent(MainActivity.this, Simple_LyricsView.class);
+                                break;
+                            case 4:
+                                intent = new Intent(MainActivity.this, LargePhoneActivity.class);
                                 break;
                             default:
 //                        showTip("在IsvDemo中哦，为了代码简洁，就不放在一起啦，^_^");
