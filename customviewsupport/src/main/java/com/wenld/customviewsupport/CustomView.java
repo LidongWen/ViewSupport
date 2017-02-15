@@ -43,6 +43,8 @@ public abstract class CustomView extends View {
 
         circleR = Math.min(mWidth - getPaddingLeft() - getPaddingRight(), mHeight - getPaddingTop() - getPaddingBottom()) / 2;
         setMeasuredDimension(mWidth, mHeight);
+
+        reset();
     }
 
     private int measure(int origin) {
@@ -58,13 +60,6 @@ public abstract class CustomView extends View {
         }
         return result;
     }
-
-    @Override
-    protected void onSizeChanged(int w, int h, int oldw, int oldh) {
-        super.onSizeChanged(w, h, oldw, oldh);
-        reset();
-    }
-
 
     public abstract void initAttrs(AttributeSet attrs);
 

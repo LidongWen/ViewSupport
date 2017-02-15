@@ -20,7 +20,8 @@ public class MainActivity extends AppCompatActivity {
     public RecyclerView rlvAtyFilter;
     CommonAdapter adapter;
     List<String> list = new ArrayList<>();
-    String items[] = {" 继承 CustomView ", " 传统处理手势","使用 GestureListerView 分解手势"," 渐变效果","ViewPage切换效果"};
+    String items[] = {" 继承 CustomView ", " 传统处理手势","使用 GestureListerView 分解手势"," 渐变效果","ViewPage切换效果","matrix setPoly","不规则图形的触摸",
+    "scroller","pathMeasure"};
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,6 +55,18 @@ public class MainActivity extends AppCompatActivity {
                                 break;
                             case 4:
                                 intent = new Intent(MainActivity.this, LargePhoneActivity.class);
+                                break;
+                            case 5:
+                                intent = new Intent(MainActivity.this, Simple_matrixSetPoly.class);
+                                break;
+                            case 6:
+                                intent = new Intent(MainActivity.this, Simple_Region.class);
+                                break;
+                            case 7:
+                                intent = new Intent(MainActivity.this, Simple_scrollLayout.class);
+                                break;
+                            case 8:
+                                intent = new Intent(MainActivity.this, Simple_pathmeasure.class);
                                 break;
                             default:
 //                        showTip("在IsvDemo中哦，为了代码简洁，就不放在一起啦，^_^");

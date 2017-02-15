@@ -20,6 +20,10 @@
         <activity android:name=".Simple_GestureListener_2" />
         <activity android:name=".Simple_LyricsView" />
         <activity android:name=".LargePhoneActivity" />
+        <activity android:name=".Simple_matrixSetPoly" />
+        <activity android:name=".Simple_Region" />
+        <activity android:name=".Simple_scrollLayout" />
+        <activity android:name=".Simple_pathmeasure" />
     </application>
 
 </manifest>
