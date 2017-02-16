@@ -8,74 +8,49 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.TextView;
 
+import com.wenld.simapcustom.svg.SVGActivity;
 import com.zhy.adapter.recyclerview.CommonAdapter;
 import com.zhy.adapter.recyclerview.MultiItemTypeAdapter;
 import com.zhy.adapter.recyclerview.base.ViewHolder;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     public RecyclerView rlvAtyFilter;
     CommonAdapter adapter;
-    List<String> list = new ArrayList<>();
-    String items[] = {" 继承 CustomView ", " 传统处理手势","使用 GestureListerView 分解手势"," 渐变效果","ViewPage切换效果","matrix setPoly","不规则图形的触摸",
-    "scroller","pathMeasure","pathmeasure"};
+    List<ItemClass> list = new ArrayList<>();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 //        getActionBar().setTitle("自定义View");
+        list.add(new ItemClass(" 继承 CustomView ", Simple_ExtendsCustom.class));
+        list.add(new ItemClass(" 使用 GestureListerView 分解手势 ", Simple_GestureListener.class));
 
-        list = Arrays.asList(items);
+        list.add(new ItemClass(" 传统处理手势 ", Simple_GestureListener_2.class));
+        list.add(new ItemClass(" 渐变效果 歌词 ", Simple_LyricsView.class));
+        list.add(new ItemClass(" ViewPage切换效果 ", LargePhoneActivity.class));
+        list.add(new ItemClass(" matrix setPoly ", Simple_matrixSetPoly.class));
+        list.add(new ItemClass(" 不规则图形的触摸 ", Simple_Region.class));
+        list.add(new ItemClass(" scroller ", Simple_scrollLayout.class));
+        list.add(new ItemClass(" pathmeasure ", PathMeasureActivity.class));
+        list.add(new ItemClass(" svg ", SVGActivity.class));
+        list.add(new ItemClass(" qq红点拖拽 ", QQActivity.class));
+
+
         this.rlvAtyFilter = (RecyclerView) findViewById(R.id.rlv_activity_main);
 
-        adapter = new CommonAdapter<String>(this, R.layout.list_items, list) {
+        adapter = new CommonAdapter<ItemClass>(this, R.layout.list_items, list) {
             @Override
-            protected void convert(ViewHolder holder, String s, final int position) {
+            protected void convert(ViewHolder holder, final ItemClass s, final int position) {
                 TextView btn = holder.getView(R.id.btn);
-                btn.setText(s);
+                btn.setText(s.name);
                 btn.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Intent intent = null;
-                        switch (position) {
-                            case 0:
-                                intent = new Intent(MainActivity.this, Simple_ExtendsCustom.class);
-                                break;
-                            case 1:
-                                intent = new Intent(MainActivity.this, Simple_GestureListener.class);
-                                break;
-                            case 2:
-                                intent = new Intent(MainActivity.this, Simple_GestureListener_2.class);
-                                break;
-                            case 3:
-                                intent = new Intent(MainActivity.this, Simple_LyricsView.class);
-                                break;
-                            case 4:
-                                intent = new Intent(MainActivity.this, LargePhoneActivity.class);
-                                break;
-                            case 5:
-                                intent = new Intent(MainActivity.this, Simple_matrixSetPoly.class);
-                                break;
-                            case 6:
-                                intent = new Intent(MainActivity.this, Simple_Region.class);
-                                break;
-                            case 7:
-                                intent = new Intent(MainActivity.this, Simple_scrollLayout.class);
-                                break;
-                            case 8:
-                                intent = new Intent(MainActivity.this, Simple_pathmeasure.class);
-                                break;
-                            case 9:
-                                intent = new Intent(MainActivity.this, PathMeasureActivity.class);
-                                break;
-                            default:
-//                        showTip("在IsvDemo中哦，为了代码简洁，就不放在一起啦，^_^");
-                                break;
-                        }
-
+                        Intent intent = new Intent(MainActivity.this, s.className);
                         if (intent != null) {
                             startActivity(intent);
                         }
@@ -96,5 +71,15 @@ public class MainActivity extends AppCompatActivity {
                 return false;
             }
         });
+    }
+
+    public class ItemClass {
+        public String name;
+        public Class className;
+
+        public ItemClass(String name, Class className) {
+            this.name = name;
+            this.className = className;
+        }
     }
 }

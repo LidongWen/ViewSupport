@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <com.wenld.simapcustom.view.SearchView
+    <com.wenld.simapcustom.view.PathMeasureView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"></com.wenld.simapcustom.view.SearchView>
+        android:layout_height="match_parent" />
 </LinearLayout>
