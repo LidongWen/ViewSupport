@@ -24,6 +24,7 @@
         <activity android:name=".Simple_Region" />
         <activity android:name=".Simple_scrollLayout" />
         <activity android:name=".Simple_pathmeasure" />
+        <activity android:name=".PathMeasureActivity"/>
     </application>
 
 </manifest>

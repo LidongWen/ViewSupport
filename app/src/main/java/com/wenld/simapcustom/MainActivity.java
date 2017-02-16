@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
     CommonAdapter adapter;
     List<String> list = new ArrayList<>();
     String items[] = {" 继承 CustomView ", " 传统处理手势","使用 GestureListerView 分解手势"," 渐变效果","ViewPage切换效果","matrix setPoly","不规则图形的触摸",
-    "scroller","pathMeasure"};
+    "scroller","pathMeasure","pathmeasure"};
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -67,6 +67,9 @@ public class MainActivity extends AppCompatActivity {
                                 break;
                             case 8:
                                 intent = new Intent(MainActivity.this, Simple_pathmeasure.class);
+                                break;
+                            case 9:
+                                intent = new Intent(MainActivity.this, PathMeasureActivity.class);
                                 break;
                             default:
 //                        showTip("在IsvDemo中哦，为了代码简洁，就不放在一起啦，^_^");
