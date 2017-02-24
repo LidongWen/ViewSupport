@@ -4,6 +4,7 @@ import android.animation.Animator;
 import android.animation.ValueAnimator;
 import android.content.Context;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.PathMeasure;
@@ -20,9 +21,9 @@ public class PathMeasureView extends CustomView {
     Path dst;
     Paint mDeafultPaint;
 
-    float percent=0.5f;
+    float percent = 0.5f;
     float length;
-    PathMeasure measure ;
+    PathMeasure measure;
 
     public PathMeasureView(Context context) {
         super(context);
@@ -38,20 +39,25 @@ public class PathMeasureView extends CustomView {
 
 
     }
+
     private ValueAnimator mStartingAnimator;
 
     @Override
     public void initValue() {
-        mDeafultPaint=new Paint();
+        mDeafultPaint = new Paint();
         mDeafultPaint.setStyle(Paint.Style.STROKE);
+        mDeafultPaint.setColor(Color.BLUE);
+        mDeafultPaint.setStrokeWidth(15);
+        mDeafultPaint.setStrokeCap(Paint.Cap.ROUND);
+        mDeafultPaint.setAntiAlias(true);
 
         dst = new Path();
         path = new Path();
         path.addRect(-100, -100, 100, 100, Path.Direction.CW);  // 添加小矩形
         path.addRect(-200, -200, 200, 200, Path.Direction.CW);  // 添加大矩形
 
-        measure = new PathMeasure(path, false);         // 将 Path 与 PathMeasureActivity 关联
-        length=measure.getLength();
+        measure = new PathMeasure(path, false);         // 将 Path 与 PathMeasure  关联
+        length = measure.getLength();
 
 
         ValueAnimator.AnimatorUpdateListener mUpdateListener = new ValueAnimator.AnimatorUpdateListener() {
@@ -95,14 +101,15 @@ public class PathMeasureView extends CustomView {
     @Override
     protected void onDraw(Canvas canvas) {
 
-        canvas.translate(mWidth / 2, mHeight/ 2);
+        canvas.translate(mWidth / 2, mHeight / 2);
 
         dst.reset();
         dst.lineTo(0, 0);
+        mDeafultPaint.setColor(Color.RED);
+        canvas.drawPath(path, mDeafultPaint);
+        mDeafultPaint.setColor(Color.BLUE);
 
-//        canvas.drawPath(path,mDeafultPaint);
-
-        measure.getSegment(0, length*percent, dst, true);                   // 截取一部分 并使用 moveTo 保持截取得到的 Path 第一个点的位置不变
+        measure.getSegment(0, length * percent, dst, true);                   // 截取一部分 并使用 moveTo 保持截取得到的 Path 第一个点的位置不变
         canvas.drawPath(dst, mDeafultPaint);
 
     }

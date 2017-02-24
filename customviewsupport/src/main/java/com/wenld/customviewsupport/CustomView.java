@@ -60,7 +60,6 @@ public abstract class CustomView extends View {
         return result;
     }
 
-
     public abstract void initAttrs(AttributeSet attrs);
 
     /**
