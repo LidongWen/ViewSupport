@@ -8,6 +8,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.TextView;
 
+import com.wenld.commontools.AllUtilConfig;
 import com.wenld.simapcustom.svg.SVGActivity;
 import com.zhy.adapter.recyclerview.CommonAdapter;
 import com.zhy.adapter.recyclerview.MultiItemTypeAdapter;
@@ -25,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        AllUtilConfig.LogSwitch=true;
 //        getActionBar().setTitle("自定义View");
         list.add(new ItemClass(" 继承 CustomView ", Simple_ExtendsCustom.class));
         list.add(new ItemClass(" 使用 GestureListerView 分解手势 ", Simple_GestureListener.class));
@@ -38,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
         list.add(new ItemClass(" pathmeasure ", PathMeasureActivity.class));
         list.add(new ItemClass(" svg ", SVGActivity.class));
         list.add(new ItemClass(" qq红点拖拽 ", QQActivity.class));
-
+        list.add(new ItemClass(" 多点触控 ", Simple_DragView.class));
 
         this.rlvAtyFilter = (RecyclerView) findViewById(R.id.rlv_activity_main);
 

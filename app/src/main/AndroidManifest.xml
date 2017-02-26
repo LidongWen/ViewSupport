@@ -25,8 +25,8 @@
         <activity android:name=".Simple_scrollLayout" />
         <activity android:name=".PathMeasureActivity" />
         <activity android:name=".svg.SVGActivity" />
-        <activity android:name=".QQActivity"/>
-
+        <activity android:name=".QQActivity" />
+        <activity android:name=".Simple_DragView" />
     </application>
 
 </manifest>
