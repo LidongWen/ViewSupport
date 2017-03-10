@@ -437,19 +437,20 @@ public class ZoomImageView extends ImageView implements OnScaleGestureListener,
             int dh = d.getIntrinsicHeight();
             float scale = 1.0f;
             // 如果图片的宽或者高大于屏幕，则缩放至屏幕的宽或者高
-            if (dw > width && dh <= height)
-            {
-                scale = width * 1.0f / dw;
-            }
-            if (dh > height && dw <= width)
-            {
-                scale = height * 1.0f / dh;
-            }
-            // 如果宽和高都大于屏幕，则让其按按比例适应屏幕大小
-            if (dw > width && dh > height)
-            {
-                scale = Math.min(width * 1.0f / dw, height * 1.0f / dh);
-            }
+//            if (dw > width && dh <= height)
+//            {
+//                scale = width * 1.0f / dw;
+//            }
+//            if (dh > height && dw <= width)
+//            {
+//                scale = height * 1.0f / dh;
+//            }
+//            // 如果宽和高都大于屏幕，则让其按按比例适应屏幕大小
+//            if (dw > width && dh > height)
+//            {
+//                scale = Math.min(width * 1.0f / dw, height * 1.0f / dh);
+//            }
+            scale = width * 1.0f / dw;
             initScale = scale;
 
             Log.e(TAG, "initScale = " + initScale);
