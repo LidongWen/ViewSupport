@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <com.wenld.simapcustom.view.zoomImage.ZoomImage01
+    <com.wenld.simapcustom.view.zoomImage.ZoomImageView
         android:layout_width="match_parent"
         android:id="@+id/image_acitivty_zoom"
         android:layout_height="match_parent" />

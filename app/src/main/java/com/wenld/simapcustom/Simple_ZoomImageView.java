@@ -4,7 +4,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 
-import com.wenld.simapcustom.view.zoomImage.ZoomImage01;
+import com.wenld.simapcustom.view.zoomImage.ZoomImageView;
 
 /**
  * <p/>
@@ -14,7 +14,7 @@ import com.wenld.simapcustom.view.zoomImage.ZoomImage01;
  */
 
 public class Simple_ZoomImageView extends AppCompatActivity {
-    private ZoomImage01 image_acitivty_zoom;
+    private ZoomImageView image_acitivty_zoom;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -25,6 +25,6 @@ public class Simple_ZoomImageView extends AppCompatActivity {
     }
 
     private void initView() {
-        image_acitivty_zoom = (ZoomImage01) findViewById(R.id.image_acitivty_zoom);
+        image_acitivty_zoom = (ZoomImageView) findViewById(R.id.image_acitivty_zoom);
     }
 }
