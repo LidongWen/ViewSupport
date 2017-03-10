@@ -61,20 +61,26 @@ public class LyricsView extends CustomView {
 
     }
 
+    float progressWidth;
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
+
+        progressWidth = (mPercent / MAX_PROGRESS) * mWidth;
 
         textPaint.setColor(colorRight);
         textPaint.getTextBounds(text, 0, text.length(), textBouds);
         textPaint.setTextSize(DensityUtils.sp2px(getContext(), 20));
         Paint.FontMetrics fm = textPaint.getFontMetrics();
+        canvas.save(Canvas.CLIP_SAVE_FLAG);
+        canvas.clipRect(progressWidth, 0, mWidth, getMeasuredHeight());
         canvas.drawText(text, mCenterX, mCenterY - (fm.bottom - fm.top) / 2 - fm.top, textPaint);
+        canvas.restore();
 
         // 渐变
         textPaint.setColor(colorLeft);
 //        textPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_IN));
-        float progressWidth = (mPercent / MAX_PROGRESS) * getMeasuredWidth();
+
         canvas.save(Canvas.CLIP_SAVE_FLAG);
         canvas.clipRect(0, 0, progressWidth, getMeasuredHeight());
         canvas.drawText(text, mCenterX, mCenterY - (fm.bottom - fm.top) / 2 - fm.top, textPaint);

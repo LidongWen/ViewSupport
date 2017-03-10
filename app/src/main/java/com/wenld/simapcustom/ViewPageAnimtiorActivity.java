@@ -7,7 +7,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.ImageView;
-
 import com.wenld.simapcustom.viewPage.RotateDownPageTransformer;
 import com.wenld.simapcustom.viewPage.ViewPagerCompat;
 
@@ -22,12 +21,13 @@ import java.util.List;
  * github: https://github.com/LidongWen
  */
 
-public class LargePhoneActivity extends Activity {
+public class ViewPageAnimtiorActivity extends Activity {
     private ViewPagerCompat mViewPager;
     private int[] mImgIds = new int[]{R.mipmap.ic_launcher,
             R.mipmap.ic_launcher, R.mipmap.ic_launcher, /*R.mipmap.ic_launcher,
             R.mipmap.ic_launcher, R.mipmap.ic_launcher*/};
     private List<ImageView> mImageViews = new ArrayList<ImageView>();
+    PagerAdapter pagerAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,13 +37,12 @@ public class LargePhoneActivity extends Activity {
         setContentView(R.layout.activity_large);
 
         initData();
-
         mViewPager = (ViewPagerCompat) findViewById(R.id.id_viewpager);
         mViewPager.setOffscreenPageLimit(mImgIds.length);
 //        mViewPager.setPageTransformer(true, new DepthPageTransformer());
-		mViewPager.setPageTransformer(true, new RotateDownPageTransformer());
+        mViewPager.setPageTransformer(true, new RotateDownPageTransformer());
 //        mViewPager.setPageTransformer(true, new ZoomOutPageTransformer());
-        mViewPager.setAdapter(new PagerAdapter() {
+        mViewPager.setAdapter(pagerAdapter = new PagerAdapter() {
             @Override
             public Object instantiateItem(ViewGroup container, int position) {
 
@@ -65,10 +64,15 @@ public class LargePhoneActivity extends Activity {
 
             @Override
             public int getCount() {
-                return mImgIds.length;
+                return mImageViews.size();
             }
         });
 
+//        ViewPagerCompat.LayoutParams layoutParams=new ViewPagerCompat.LayoutParams();
+//        ImageView imageView = new ImageView(getApplicationContext());
+//        imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
+//        imageView.setImageResource(R.mipmap.ic_launcher_round);
+//        mViewPager.addView(imageView);
     }
 
     private void initData() {

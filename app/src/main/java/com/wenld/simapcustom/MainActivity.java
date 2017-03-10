@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
 
         list.add(new ItemClass(" 传统处理手势 ", Simple_GestureListener_2.class));
         list.add(new ItemClass(" 渐变效果 歌词 ", Simple_LyricsView.class));
-        list.add(new ItemClass(" ViewPage切换效果 ", LargePhoneActivity.class));
+        list.add(new ItemClass(" ViewPage切换效果 ", ViewPageAnimtiorActivity.class));
         list.add(new ItemClass(" matrix setPoly ", Simple_matrixSetPoly.class));
         list.add(new ItemClass(" 不规则图形的触摸 ", Simple_Region.class));
         list.add(new ItemClass(" scroller ", Simple_scrollLayout.class));
@@ -41,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
         list.add(new ItemClass(" svg ", SVGActivity.class));
         list.add(new ItemClass(" qq红点拖拽 ", QQActivity.class));
         list.add(new ItemClass(" 多点触控 ", Simple_DragView.class));
+       list.add(new ItemClass(" 缩放图片 ", Simple_ZoomImageView.class));
 
         this.rlvAtyFilter = (RecyclerView) findViewById(R.id.rlv_activity_main);
 
