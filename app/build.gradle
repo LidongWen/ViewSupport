@@ -1,12 +1,13 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 23
-    buildToolsVersion "23.0.3"
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
+
     defaultConfig {
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
         applicationId "com.wenld.simapcustom"
-        minSdkVersion 14
-        targetSdkVersion 23
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
@@ -24,12 +25,12 @@ dependencies {
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    compile 'com.android.support:appcompat-v7:23.4.0'
+    compile deps.appcompatV7
     testCompile 'junit:junit:4.12'
     compile project(':customviewsupport')
     compile 'com.zhy:base-rvadapter:3.0.2'
-    compile 'com.android.support:support-v4:23.4.0'
-    compile 'com.android.support:design:23.4.0'
+    compile deps.supportV4
+    compile deps.supportDesign
     compile 'com.github.LidongWen:AdapterValue:1.0.0'
     compile 'com.github.LidongWen:commonTools:1.2.1'
     compile 'com.github.LidongWen:StickyDot:1.0.0'

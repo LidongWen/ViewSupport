@@ -28,6 +28,7 @@
         <activity android:name=".QQActivity" />
         <activity android:name=".Simple_DragView" />
         <activity android:name=".Simple_ZoomImageView" />
+        <activity android:name=".LargeImageViewActivity" />
     </application>
 
 </manifest>
