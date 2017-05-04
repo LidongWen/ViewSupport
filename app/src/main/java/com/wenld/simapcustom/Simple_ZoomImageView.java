@@ -21,7 +21,7 @@ public class Simple_ZoomImageView extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.ativity_zoomimageview);
         initView();
-        image_acitivty_zoom.setImageResource(R.mipmap.larger_image);
+        image_acitivty_zoom.setImageResource(R.mipmap.mylove);
     }
 
     private void initView() {

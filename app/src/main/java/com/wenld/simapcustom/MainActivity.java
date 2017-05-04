@@ -42,6 +42,7 @@ public class MainActivity extends AppCompatActivity {
         list.add(new ItemClass(" qq红点拖拽 ", QQActivity.class));
         list.add(new ItemClass(" 多点触控 ", Simple_DragView.class));
        list.add(new ItemClass(" 缩放图片 ", Simple_ZoomImageView.class));
+        list.add(new ItemClass(" 巨图加载 ", LargeImageViewActivity.class));
 
         list.add(new ItemClass("手势分发",TouchEventActivity.class));
 
