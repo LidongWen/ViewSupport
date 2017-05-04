@@ -11,8 +11,7 @@ import com.wenld.customviewsupport.CanvasAidUtils;
 import com.wenld.customviewsupport.CustomView;
 
 /**
- *
- *  // 继承 ExtentsCustomView 的示例
+ * // 继承 ExtentsCustomView 的示例
  * <p/>
  * Author: 温利东 on 2017/2/6 15:16.
  * blog: http://blog.csdn.net/sinat_15877283
@@ -57,7 +56,7 @@ public class ExtendsCustomView extends CustomView {
     protected void onDraw(Canvas canvas) {
         canvas.drawCircle(mCenterX, mCenterY, circleR / 2, paintMain);
 //        CanvasAidUtils.set2DCoordinateLe(canvas);
-        canvas.translate(mWidth/2,mHeight/2);  // 移动画布
+        canvas.translate(mWidth / 2, mHeight / 2);  // 移动画布
         CanvasAidUtils.setLineColor(Color.RED);
         CanvasAidUtils.draw2DCoordinateSpace(canvas);
 //        CanvasAidUtils.setDrawAid(false);
