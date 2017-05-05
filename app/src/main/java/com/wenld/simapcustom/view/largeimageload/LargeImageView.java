@@ -12,6 +12,7 @@ import android.view.View;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.lang.ref.WeakReference;
 
 /**
  * Created by zhy on 15/5/16.
@@ -28,6 +29,7 @@ public class LargeImageView extends View {
     private volatile Rect mRect = new Rect();
 
     private MoveGestureDetector mDetector;
+    private WeakReference<Bitmap> localBitmap;
 
 
     private static final BitmapFactory.Options options = new BitmapFactory.Options();
@@ -43,9 +45,8 @@ public class LargeImageView extends View {
             // Grab the bounds for the scene dimensions
             tmpOptions.inJustDecodeBounds = true;
             BitmapFactory.decodeStream(is, null, tmpOptions);
-            mImageWidth = 1233;//mDecoder.getwi;
-            mImageHeight = 7248;//tmpOptions.outHeight;
-
+            mImageWidth = /*1233;//*/mDecoder.getWidth();
+            mImageHeight = /*7248;*/mDecoder.getHeight();
             requestLayout();
             invalidate();
         } catch (IOException e) {
@@ -134,18 +135,23 @@ public class LargeImageView extends View {
 
     Bitmap bitmap;
 
-    @Override
-    public void invalidate() {
 
-        super.invalidate();
+    boolean checkRect(Rect rect) {
+        if (rect.right <= 0 || rect.bottom <= 0 || rect.left >= mImageWidth
+                || rect.top >= mImageHeight) {
+            return false;
+        }
+        return true;
     }
 
     @Override
     protected void onDraw(Canvas canvas) {
-        bitmap = mDecoder.decodeRegion(mRect, options);
-        canvas.drawBitmap(bitmap, 0, 0, null);
-        bitmap.recycle();
-        bitmap = null;
+        if (checkRect(mRect)) {
+            bitmap = mDecoder.decodeRegion(mRect, options);
+            canvas.drawBitmap(bitmap, 0, 0, null);
+            bitmap.recycle();
+            bitmap = null;
+        }
     }
 
     @Override

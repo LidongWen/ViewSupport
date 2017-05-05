@@ -175,7 +175,6 @@ public class ZoomImageView extends ImageView implements OnScaleGestureListener,
         }
     }
 
-    @SuppressLint("NewApi")
     @Override
     public boolean onScale(ScaleGestureDetector detector)
     {

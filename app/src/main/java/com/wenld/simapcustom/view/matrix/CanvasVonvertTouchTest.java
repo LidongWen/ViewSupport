@@ -95,8 +95,8 @@ public class CanvasVonvertTouchTest extends CustomView {
         mMapMatrix.reset();
 
         // 注意这个区域的大小
-        Region globalRegion = new Region(-(mWidth-getPaddingLeft()-getPaddingRight()), -(mHeight-getPaddingTop()-getPaddingBottom()), (mWidth-getPaddingLeft()-getPaddingRight()), (mHeight-getPaddingTop()-getPaddingBottom()));
-        int minWidth = (mWidth-getPaddingLeft()-getPaddingRight()) > (mHeight-getPaddingTop()-getPaddingBottom()) ? (mHeight-getPaddingTop()-getPaddingBottom()) : (mWidth-getPaddingLeft()-getPaddingRight());
+        Region globalRegion = new Region(-(mWidth - getPaddingLeft() - getPaddingRight()), -(mHeight - getPaddingTop() - getPaddingBottom()), (mWidth - getPaddingLeft() - getPaddingRight()), (mHeight - getPaddingTop() - getPaddingBottom()));
+        int minWidth = (mWidth - getPaddingLeft() - getPaddingRight()) > (mHeight - getPaddingTop() - getPaddingBottom()) ? (mHeight - getPaddingTop() - getPaddingBottom()) : (mWidth - getPaddingLeft() - getPaddingRight());
         minWidth *= 0.8;
 
         int br = minWidth / 2;
@@ -133,6 +133,8 @@ public class CanvasVonvertTouchTest extends CustomView {
         up.setPath(up_p, globalRegion);
     }
 
+    int a;
+
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         float[] pts = new float[2];
@@ -149,7 +151,11 @@ public class CanvasVonvertTouchTest extends CustomView {
                 currentFlag = touchFlag;
                 break;
             case MotionEvent.ACTION_MOVE:
-                currentFlag = getTouchedPath(x, y);
+                a = getTouchedPath(x, y);
+                if (currentFlag != a) {
+                    currentFlag = a;
+                    invalidate();
+                }
                 break;
             case MotionEvent.ACTION_UP:
                 currentFlag = getTouchedPath(x, y);
@@ -168,13 +174,14 @@ public class CanvasVonvertTouchTest extends CustomView {
                     }
                 }
                 touchFlag = currentFlag = -1;
+                invalidate();
                 break;
             case MotionEvent.ACTION_CANCEL:
                 touchFlag = currentFlag = -1;
+                invalidate();
                 break;
         }
 
-        invalidate();
         return true;
     }
 
